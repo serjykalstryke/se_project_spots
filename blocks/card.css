@@ -10,6 +10,7 @@
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
+    color: #212121;
 }
 
 .card__image {
