@@ -4,7 +4,8 @@
 
 - Intro
 - Figma
-- Images
+- App Demo
+- Deployment
 
 **Intro**
 
