@@ -8,7 +8,8 @@
   
 **Intro**
   
-This project is made so all the elements are displayed correctly on popular screen sizes. 
+This project is made so all the elements are displayed correctly on popular screen sizes. This project was built using HTML and CSS 
+Images were sourced from Figma mockup. 
   
 **Figma**  
   
@@ -16,4 +17,10 @@ This project is made so all the elements are displayed correctly on popular scre
   
 **Images**  
   
-Images were sourced from Figma mockup. 
+
+
+**Deployment**
+
+The site can be seen at the following link: 
+
+https://serjykalstryke.github.io/se_project_spots/
