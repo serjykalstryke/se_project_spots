@@ -149,6 +149,33 @@
 			<footer class="footer page__section">
 				<p class="footer__copyright">&copy; 2025 David Stinnett</p>
 			</footer>
+			<div class="modal modal_is-opened">
+				<div class="modal__container">
+					<button type="button" class="modal__close-btn"></button>
+					<h2 class="modal__title">Edit profile</h2>
+					<form class="modal__form">
+						<label for="profile-name-input" class="modal__label">
+							Name
+							<input
+								type="text"
+								class="modal__input"
+								id="profile-name-input"
+								placeholder="Type your name"
+							/>
+						</label>
+						<label for="profile-description-input" class="modal__label">
+							Description
+							<input
+								type="text"
+								class="modal__input"
+								id="profile-description-input"
+								placeholder="Describe yourself"
+							/>
+						</label>
+						<button type="submit" class="modal__submit-btn">Save</button>
+					</form>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>
