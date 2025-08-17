@@ -9,6 +9,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+    padding: 10px;
 }
 
 .modal_is-opened {
@@ -55,6 +56,7 @@
 .modal__form {
 	display: flex;
 	flex-direction: column;
+    max-width: 700px;
 }
 
 .modal__label {
@@ -101,4 +103,24 @@
 .modal__submit-btn:hover {
     background-color: rgba(33, 33, 33, 0.8);
     cursor: pointer;
+}
+
+@media screen and (max-width: 627px) {
+    .modal__title  {
+        font-size: 20px;
+        margin: 0 0 34px;
+    }
+
+    .modal__label {
+        font-size: 16px;
+    }
+
+    .modal__input {
+        max-width: 465px;
+        font-size: 16px;
+    }
+
+    .modal__submit-btn {
+        max-width: none;
+    }
 }
