@@ -75,9 +75,9 @@
 
 .modal__input {
 	display: block;
+	box-sizing: border-box;
 	margin-top: 8px;
 	width: 100%;
-	max-width: 600px;
 	padding: 16px 12px;
 	border-radius: 8px;
 	border-color: #21212166;
@@ -96,6 +96,7 @@
 
 .modal__submit-btn {
 	max-width: 156px;
+	border: none;
 	width: 100%;
 	padding: 18px 32px;
 	border-radius: 8px;
@@ -109,13 +110,21 @@
 }
 
 @media screen and (max-width: 627px) {
+	.modal__container {
+		padding: 12px;
+	}
+
+	.modal__close-btn {
+		top: 12px;
+		right: 12px;
+	}
+
     .modal__title  {
         font-size: 20px;
         margin: 0 0 34px;
     }
 
     .modal__input {
-        max-width: 475px;
         font-size: 16px;
     }
 
