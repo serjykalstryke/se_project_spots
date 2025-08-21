@@ -18,6 +18,7 @@
 
 .profile__name {
 	margin: 0 0 12px;
+	max-width: 420px;
 	font-weight: 500;
 	font-size: 32px;
 	line-height: 1;
@@ -30,6 +31,11 @@
 
 .profile__description {
 	margin: 0;
+	max-width: 97px;
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 1;
+	opacity: .7;
 	display: -webkit-box;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -38,43 +44,49 @@
 }
 
 .profile__edit-btn {
+	font-size: 16px; 
+	font-weight: 500;
+	line-height: 1;
 	margin-top: auto;
-    background-color: transparent;
-    border: none;
-    margin-right: auto;
-    white-space: nowrap;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    color: rgba(33, 33, 33, 0.7);
+	background-color: transparent;
+	border: none;
+	margin-right: auto;
+	white-space: nowrap;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	color: rgba(33, 33, 33, 0.7);
 }
 
 .profile__edit-btn:hover {
-    color: rgb(33, 33, 33);
-    cursor: pointer;
+	color: rgb(33, 33, 33);
+	cursor: pointer;
 }
 
 .profile__add-btn {
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 1;
 	margin-left: auto;
-    margin-top: auto;
-    background-color: #212121;
-    color: #FCF5E5;
+	margin-top: auto;
+	background-color: #212121;
+	color: #fcf5e5;
 	padding: 18px 32px;
-    border-radius: 8px;
-    width: 149px;
-    height: 52px;
-    white-space: nowrap;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
+	border-radius: 8px;
+	width: 149px;
+	height: 52px;
+	white-space: nowrap;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
 	border: none;
 }
 
 .profile__add-btn:hover {
-    background-color: rgba(33, 33, 33, 0.8);
-    cursor: pointer;
+	background-color: rgba(33, 33, 33, 0.8);
+	cursor: pointer;
 }
 
 @media screen and (max-width: 627px) {
@@ -100,19 +112,19 @@
 	.profile__name {
 		font-size: 20px;
 		margin: 0 0 6px;
-        max-width: 288px;
+		max-width: 288px;
 	}
 
 	.profile__column {
 		margin: 0 0 20px;
 	}
 
-    .profile__edit-btn {
-        margin-left: auto;
-    }
+	.profile__edit-btn {
+		margin-left: auto;
+	}
 
 	.profile__add-btn {
 		margin-left: 0;
-        width: 100%;
+		width: 100%;
 	}
 }
