@@ -84,10 +84,6 @@ editProfileForm.addEventListener("submit", function (evt) {
 
 newPostForm.addEventListener("submit", function (evt) {
   evt.preventDefault();
-
-  console.log(newPostImageLink.value);
-  console.log(newPostCaptionInput.value);
-
   const inputValues = {
     name: newPostCaptionInput.value,
     link: newPostImageLink.value
