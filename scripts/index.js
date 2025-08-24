@@ -15,6 +15,21 @@ const newPostCaptionInput = newPostForm.querySelector("#image-caption-input");
 const profileNameEl = document.querySelector(".profile__name");
 const profileDescriptionEl = document.querySelector(".profile__description");
 
+const cardTemplate = document.querySelector("#card-template").content.querySelector(".card");
+const cardList = document.querySelector(".cards__list")
+function getCardElement(data) {
+  const cardElement = cardTemplate.cloneNode(true);
+  const cardTitleEl = cardElement.querySelector(".card__title");
+  const cardImageEl = cardElement.querySelector(".card__image");
+
+  cardImageEl.src = data.link;
+  cardImageEl.alt = data.name;
+  cardTitleEl.textContent = data.name;
+
+  return cardElement;
+}
+
+
 const initialCards = [
   {
     name: "Vale Thorens",
@@ -69,13 +84,23 @@ editProfileForm.addEventListener("submit", function (evt) {
 
 newPostForm.addEventListener("submit", function (evt) {
   evt.preventDefault();
+
   console.log(newPostImageLink.value);
   console.log(newPostCaptionInput.value);
+
+  const inputValues = {
+    name: newPostCaptionInput.value,
+    link: newPostImageLink.value
+  }
+
+  const cardElement = getCardElement(inputValues);
+  cardList.prepend(cardElement);
+
   newPostForm.reset();
   closeModal(newPostModal);
 });
 
-initialCards.forEach(function(item) {
-  console.log(item.name);
-  console.log(item.link);
+initialCards.forEach(function (item) {
+  const cardElement = getCardElement(item);
+  cardList.append(cardElement);
 })
