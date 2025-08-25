@@ -1,3 +1,7 @@
+.card {
+	position: relative;
+}
+
 .card__content {
 	display: flex;
 	align-items: center;
@@ -20,6 +24,21 @@
 	object-fit: cover;
 	display: block;
 	border-radius: 8px;
+}
+
+.card__delete-button {
+	width: 32px;
+	height: 32px;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	border: none;
+	background-color: transparent;
+	background-image: url("../images/trash.svg")
+}
+
+.card__delete-button:hover {
+	background-image: url("../images/trashHover.svg")
 }
 
 .card__like-button {
