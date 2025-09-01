@@ -131,6 +131,10 @@
 	margin-top: 8px;
 }
 
+.modal__error_visible {
+	opacity: 0.7;
+}
+
 .modal__submit-btn {
 	max-width: 156px;
 	border: none;
