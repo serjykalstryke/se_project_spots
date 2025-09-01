@@ -55,14 +55,14 @@ const initialCards = [
   }
 ];
 
-function getCardElement(data) {
+function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardTitleEl = cardElement.querySelector(".card__title");
   const cardImageEl = cardElement.querySelector(".card__image");
 
-  cardImageEl.src = data.link;
-  cardImageEl.alt = data.name;
-  cardTitleEl.textContent = data.name;
+  cardImageEl.src = cardData.link;
+  cardImageEl.alt = cardData.name;
+  cardTitleEl.textContent = cardData.name;
 
   const cardLikeBtnEl = cardElement.querySelector(".card__like-button");
   cardLikeBtnEl.addEventListener("click", () => {
@@ -74,13 +74,13 @@ function getCardElement(data) {
     cardElement.remove();
   })
 
-cardImageEl.addEventListener("click", () => {
-  previewImageEl.src = data.link;
-  previewImageEl.alt = data.name;
-  previewCaptionEl.textContent = data.name;
+  cardImageEl.addEventListener("click", () => {
+    previewImageEl.src = cardData.link;
+    previewImageEl.alt = cardData.name;
+    previewCaptionEl.textContent = cardData.name;
 
-  openModal(previewModal);
-})
+    openModal(previewModal);
+  })
 
   return cardElement;
 }
@@ -89,13 +89,29 @@ previewModalCloseBtn.addEventListener("click", () => {
   closeModal(previewModal);
 });
 
+function handleEscape(evt) {
+  if (evt.key === "Escape") {
+    const openedModal = document.querySelector(".modal_is-opened");
+    if (openedModal) closeModal(openedModal);
+  }
+}
+
+function handleOverlayClick(evt) {
+  if (evt.target.classList.contains("modal")) {
+    closeModal(evt.target);
+  }
+}
 
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
+  document.addEventListener("keydown", handleEscape);
+  modal.addEventListener("mousedown", handleOverlayClick);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
+  document.removeEventListener("keydown", handleEscape);
+  modal.removeEventListener("mousedown", handleOverlayClick);
 }
 
 profileEditButton.addEventListener("click", () => {
@@ -108,7 +124,6 @@ profileEditButton.addEventListener("click", () => {
 editProfileCloseButton.addEventListener("click", () => closeModal(editProfileModal));
 
 newPostButton.addEventListener("click", () => {
-  resetValidation(newPostForm, settings);
   openModal(newPostModal);
 });
 
@@ -131,6 +146,7 @@ newPostForm.addEventListener("submit", function (evt) {
   const cardElement = getCardElement(inputValues);
   cardList.prepend(cardElement);
   newPostForm.reset();
+  resetValidation(newPostForm, settings);
   disableButton(newPostSubmitButton, settings);
   closeModal(newPostModal);
 });
