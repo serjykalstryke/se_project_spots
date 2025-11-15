@@ -3,10 +3,7 @@
 	opacity: 0;
 	background-color: #00000080;
 	position: fixed;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
+	inset: 0;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -33,6 +30,7 @@
 	padding: 32px 50px;
 	position: relative;
 	color: #212121;
+	box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
 }
 
 .modal__close-btn {
@@ -48,10 +46,10 @@
 	padding: 0;
 	align-self: center;
 	opacity: 0.5;
-	border: 2px;
 }
 
-.modal__close-btn_type_preview {
+.modal__close-btn_type_preview,
+.modal__close-btn_type_delete {
 	top: 0;
 	right: -52.5px;
 	background: url("../images/modalClose.svg");
@@ -63,12 +61,12 @@
 }
 
 .modal__close-btn_type_preview:hover {
-	opacity: 40%;
+	opacity: 0.4;
 }
 
 .modal__title {
 	margin: 0 0 32px;
-	font-family: Poppins;
+	font-family: Poppins, Arial, Helvetica, sans-serif;
 	font-size: 32px;
 	line-height: 1;
 	font-weight: 500;
@@ -97,10 +95,10 @@
 	padding: 16px 12px;
 	border-radius: 8px;
 	border-color: #21212166;
+	border-width: 1px;
 	font-size: 20px;
 	line-height: 1;
 	font-weight: 500;
-	border-width: 1px;
 }
 
 .modal__input::placeholder {
@@ -119,14 +117,13 @@
 	border: 1px solid rgba(255, 0, 0, 0.6);
 }
 
-
 .modal__error {
 	display: block;
-	color: #FF0000;
+	color: #ff0000;
 	opacity: 0.7;
 	font-family: Poppins, Arial, Helvetica, sans-serif;
 	font-size: 16px;
-	line-height: 1.10;
+	line-height: 1.1;
 	font-weight: 500;
 	margin-top: 8px;
 }
@@ -137,16 +134,20 @@
 
 .modal__submit-btn {
 	max-width: 156px;
-	border: none;
 	width: 100%;
 	padding: 18px 32px;
 	border-radius: 8px;
+	border: none;
 	background-color: #212121;
 	color: #fcf5e5;
+	font-family: Poppins, Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	line-height: 1;
+	font-weight: 500;
 }
 
 .modal__submit-btn:hover {
-	background-color: #212121CC;
+	background-color: #212121cc;
 	cursor: pointer;
 }
 
@@ -172,7 +173,7 @@
 .modal__caption {
 	color: #fff;
 	background-color: #212121;
-	display: inline;
+	display: inline-block;
 	border-radius: 8px;
 	padding: 4px 8px;
 	font-family: Poppins, Arial, Helvetica, sans-serif;
@@ -180,6 +181,74 @@
 	line-height: 1.2;
 	font-weight: 500;
 }
+
+/* ===== Delete-card modal specific tweaks (scoped) ===== */
+
+.modal__container_type_confirm {
+	max-width: 630px;
+	width: 100%;
+	padding: 32px 40px 28px;
+	font-size: 24px;
+}
+
+/* smaller, centered title just for this modal */
+.modal__container_type_confirm .modal__title {
+	margin-bottom: 24px;
+	text-align: center;
+	font-size: 24px;
+	line-height: 32px;
+}
+
+/* buttons wrapper */
+.modal__buttons {
+	display: flex;
+	justify-content: center;
+	gap: 16px;
+	width: 100%;
+}
+
+/* red Delete button — ONLY on delete modal */
+.modal__delete-btn {
+	width: 156px;
+	height: 52px;
+	padding: 20px 32px;
+	border-radius: 8px;
+	border: none;
+	background-color: #ff6565; /* Figma spec */
+	color: #ffffff;
+	font-family: Poppins, Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	line-height: 1;
+	font-weight: 500;
+}
+
+.modal__delete-btn:hover {
+	cursor: pointer;
+	background-color: #ff3333;
+}
+
+/* white Cancel button — ONLY on delete modal */
+.modal__cancel-btn {
+	width: 156px;
+	height: 52px;
+	padding: 18px 32px;
+	border-radius: 8px;
+	border: 1px solid #21212133;
+	background-color: #ffffff;
+	color: #212121;
+	font-family: Poppins, Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	line-height: 1;
+	font-weight: 500;
+}
+
+.modal__cancel-btn:hover {
+	cursor: pointer;
+	background-color: #212121;
+	color: #ffffff;
+}
+
+/* ===== Mobile tweaks ===== */
 
 @media screen and (max-width: 627px) {
 	.modal__container {
@@ -208,11 +277,12 @@
 		max-width: none;
 	}
 
-	.modal__close-btn_type_preview {
+	.modal__close-btn_type_preview,
+	.modal__close-btn_type_delete {
 		top: -48px;
 		right: 0;
 	}
-	
+
 	.modal__image {
 		max-width: 95vw;
 		border-radius: 4px;
@@ -220,5 +290,28 @@
 
 	.modal__caption {
 		font-size: 16px;
+	}
+
+	/* delete modal mobile layout */
+	.modal__container_type_confirm {
+		max-width: 344px;
+		padding: 24px 16px 20px;
+	}
+
+	.modal__container_type_confirm .modal__title {
+		font-size: 20px;
+		line-height: 28px;
+		margin-bottom: 20px;
+	}
+
+	.modal__buttons {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 12px;
+	}
+
+	.modal__delete-btn,
+	.modal__cancel-btn {
+		width: 100%;
 	}
 }
