@@ -57,7 +57,7 @@ const toggleButtonState = (inputList, buttonElement, config) => {
   }
 };
 
-export const resetValidation = (formElement, config) => {
+export const resetValidation = (formElement, config, { disableSubmit = true } = {}) => {
   const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
   const buttonElement = formElement.querySelector(config.submitButtonSelector);
 
@@ -65,8 +65,13 @@ export const resetValidation = (formElement, config) => {
     hideInputError(formElement, inputElement, config);
   });
 
-  disableButton(buttonElement, config);
+  if (disableSubmit) {
+    disableButton(buttonElement, config);
+  } else {
+    enableButton(buttonElement, config);
+  }
 };
+
 
 const setEventListeners = (formElement, config) => {
   const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));

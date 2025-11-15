@@ -4,7 +4,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  entry: "./src/pages/index.js",            // ✅ points to src/pages
+  entry: "./src/pages/index.js",            
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "main.[contenthash].js",
@@ -19,7 +19,7 @@ module.exports = {
         use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"],
       },
       {
-        test: /\.(png|jpe?g|gif|svg|ico)$/i, // ✅ includes ico
+        test: /\.(png|jpe?g|gif|svg|ico)$/i, 
         type: "asset/resource",
       },
       {
@@ -31,8 +31,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./src/index.html",          // ✅ src/index.html
-      favicon: "./favicon.ico",   // ✅ src/images/favicon.ico
+      template: "./src/index.html",       
+      favicon: "./favicon.ico",  
     }),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
