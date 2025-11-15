@@ -1,3 +1,6 @@
+console.log(">>> webpack.config.js is being loaded");
+
+
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
