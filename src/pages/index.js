@@ -68,9 +68,11 @@ const cardList = document.querySelector(".cards__list");
 // Delete confirmation modal
 const deleteCardModal = document.querySelector("#delete-card-modal");
 const deleteCardForm = deleteCardModal?.querySelector("form");
-const deleteCardSubmitButton = deleteCardModal?.querySelector(".modal__submit-btn");
+const deleteCardSubmitButton = deleteCardModal?.querySelector(".modal__delete-btn");
 const deleteCardCancelButton = deleteCardModal?.querySelector(".modal__cancel-btn");
-const deleteCardCloseButton = deleteCardModal?.querySelector(".modal__close-btn_type_delete");
+const deleteCardCloseButton = deleteCardModal?.querySelector(
+  ".modal__close-btn_type_delete"
+);
 
 // ---------- STATE ----------
 
@@ -156,7 +158,9 @@ function getCardElement(cardData) {
 
   // like handler → API
   cardLikeBtnEl.addEventListener("click", () => {
-    const isCurrentlyLiked = cardLikeBtnEl.classList.contains("card__like-button_active");
+    const isCurrentlyLiked = cardLikeBtnEl.classList.contains(
+      "card__like-button_active"
+    );
 
     api
       .changeLikeStatus(cardData._id, isCurrentlyLiked)
@@ -283,6 +287,7 @@ newPostForm.addEventListener("submit", (evt) => {
 // Avatar edit open
 if (avatarEditButton && avatarModal && avatarForm) {
   avatarEditButton.addEventListener("click", () => {
+    // clear old errors and disable submit via shared validator
     resetValidation(avatarForm, settings);
     openModal(avatarModal);
   });
@@ -310,6 +315,7 @@ if (avatarForm && avatarSubmitButton && profileAvatarEl && avatarInput) {
       .then((userData) => {
         profileAvatarEl.src = userData.avatar;
         avatarForm.reset();
+        resetValidation(avatarForm, settings);
         closeModal(avatarModal);
       })
       .catch(console.error)
@@ -354,13 +360,13 @@ if (deleteCardCancelButton && deleteCardModal) {
 }
 
 // Delete confirmation close button → just close modal
-
 if (deleteCardCloseButton && deleteCardModal) {
   deleteCardCloseButton.addEventListener("click", () => {
+    selectedCardElement = null;
+    selectedCardId = null;
     closeModal(deleteCardModal);
   });
 }
-
 
 // ---------- INITIAL LOAD (user + cards) ----------
 
