@@ -313,10 +313,22 @@ if (avatarForm && avatarSubmitButton && profileAvatarEl && avatarInput) {
     api
       .updateAvatar(avatar)
       .then((userData) => {
-        profileAvatarEl.src = userData.avatar;
-        avatarForm.reset();
-        resetValidation(avatarForm, settings);
-        closeModal(avatarModal);
+        const newUrl = userData.avatar;
+
+        const preloadImg = new Image();
+        preloadImg.onload = () => {
+          profileAvatarEl.src = newUrl;
+          profileAvatarEl.classList.remove("profile__avatar_hidden");
+          avatarForm.reset();
+          closeModal(avatarModal);
+        };
+        preloadImg.onerror = () => {
+          // if it fails, just close + unhide so user isn’t stuck
+          profileAvatarEl.classList.remove("profile__avatar_hidden");
+          avatarForm.reset();
+          closeModal(avatarModal);
+        };
+        preloadImg.src = newUrl;
       })
       .catch(console.error)
       .finally(() => {
@@ -378,8 +390,19 @@ api
     profileNameEl.textContent = userData.name;
     profileDescriptionEl.textContent = userData.about;
 
-    if (profileAvatarEl) {
-      profileAvatarEl.src = userData.avatar;
+    if (profileAvatarEl && userData.avatar) {
+      const avatarUrl = userData.avatar;
+
+      const preloadImg = new Image();
+      preloadImg.onload = () => {
+        profileAvatarEl.src = avatarUrl;
+        profileAvatarEl.classList.remove("profile__avatar_hidden");
+      };
+      preloadImg.onerror = () => {
+        // fallback: at least show whatever is in src now
+        profileAvatarEl.classList.remove("profile__avatar_hidden");
+      };
+      preloadImg.src = avatarUrl;
     }
 
     cardList.innerHTML = "";
