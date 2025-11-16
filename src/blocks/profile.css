@@ -24,6 +24,11 @@
 	display: block;
 }
 
+/* start invisible */
+.profile__avatar_hidden {
+  opacity: 0;
+}
+
 /* unchanged column/text rules … */
 
 .profile__column {
