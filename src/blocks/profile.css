@@ -65,6 +65,22 @@
 	cursor: pointer;
 }
 
+.profile__avatar-edit-btn {
+	font-size: 16px; 
+	font-weight: 500;
+	line-height: 1;
+	margin-top: auto;
+	background-color: transparent;
+	border: none;
+	margin-right: auto;
+	white-space: nowrap;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	color: #ffffff;
+}
+
 .profile__add-btn {
 	font-size: 16px;
 	font-weight: 500;
